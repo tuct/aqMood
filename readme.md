@@ -151,9 +151,13 @@ Print in main color.
 
 Bend the 8pin pin header by 90 degree, works very well with on a solid ground.
 
+![alt text](images/8pin_bend.png "print overview")
+
 Solder all connectors and pin headers to the pcb like this:
 
 ![alt text](images/pcb_assembled.png "print overview")
+
+The 8pin header for the LCD is soldered from the bottom, like shown in the image.
 
 The qwiic connector is not needed! It optional in case you have SMD solder equipment. 
 
