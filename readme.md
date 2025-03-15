@@ -149,7 +149,7 @@ Print in main color.
 
 ### Prepare PCB 
 
-Bend the 8pin pin header by 90 degree, works very well with on a solid ground.
+Bend the 8pin pin header by 90 degrees, works very well on a solid ground.
 
 ![alt text](images/8pin_bend.png "print overview")
 
@@ -159,7 +159,7 @@ Solder all connectors and pin headers to the pcb like this:
 
 The 8pin header for the LCD is soldered from the bottom, like shown in the image.
 
-The qwiic connector is not needed! It optional in case you have SMD solder equipment. 
+The qwiic connector is not needed! It is optional in case you have SMD solder equipment. 
 
 ### Prepare Leds
 
@@ -175,7 +175,7 @@ Start on the side with the nodge with the 7 leds going over the top and back int
 
 ![alt text](images/leds_tower_1.png "Leds ")
 
-Next is the left side, get both 3*Leds first to the top again and then below the led strip back down on the ither side.
+Next is the left side, get both 3*Leds first to the top again and then below the LED strip back down on the other side.
 
 ![alt text](images/leds_tower_2.png "Leds ")
 
@@ -195,20 +195,20 @@ Prepare a cable with  GH1.25 male - 6pin on one side and JST-XH 2.5 male - 4pin 
 
 ### Connect and Test Hardware 
 
-Connect everything together and flash the firmware. I recommend testing everthing before final assembly.
+Connect everything and flash the firmware. I recommend testing everything before final assembly.
 
 ![alt text](images/test_assembly.png "Leds ")
 
 Leds should work (might need to enable by long press the button) and LCD should show the UI.
 
-Test cycle through the display modes. It might take up to 20sec until all measurments are available.
+Test cycle through the display modes. It might take up to 20 sec until all measurements are available.
 
 ### Final Assembly 
 
 Remove supports from the 3D printed parts and add the heat insert. 
 
 
-Insert the SEN66 sensor, disconnect it from the PCB if you tested it.
+Insert the SEN66 sensor, and disconnect it from the PCB if you have tested it.
 
 
 ![alt text](images/build_sen66.png "Leds ")
@@ -307,15 +307,14 @@ aqmoodpw
 
 ## Build with esphome
 
-Current version was build with esphome 2025.2.2.
+Current version was compiled with esphome 2025.2.2.
 
-Simply run esphome run  aq-mood-c3.yaml in the esphome folder to build and upload your version.
+Run esphome run aq-mood-c3.yaml in the esphome folder to build and upload your version.
 
-Passwords are stored in secrets.yaml, some stuff can be easily modified in the main file aq-mood-c3.yaml in the SUBSTITIONS section. 
+Passwords are stored in secrets.yaml, some stuff can be easily modified in the main file aq-mood-c3.yaml in the SUBSTITIONS section.
 
-If you want to hard code a wifi pw, this is done in src/aq-mood-home-assistant.yaml
+If you want to code a wifi pw hard, this is done in src/aq-mood-home-assistant.yaml
 
-As of now, there is no official driver for tzhe sen66 sensor in esphome, so i quickly adopted to sen5X driver and published it here:
-https://github.com/tuct/esphome_external_components
+As of now, there is no official driver for the sen66 sensor in esphome, so I quickly adopted the sen5X driver and published it here: https://github.com/tuct/esphome_external_components
 
 This will be updated to use the official driver as soon as it is released.
