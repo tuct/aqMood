@@ -1,0 +1,30 @@
+esphome:
+  name: esp32
+
+esp32:
+  board: seeed_xiao_esp32s3
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: "dasfsdf"
+
+ota:
+  - platform: esphome
+    password: "dasfsdf"
+
+wifi:
+  ssid: "mista3"
+  password: "csdfsdfgdfgdfgdf"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Esp32 Fallback Hotspot"
+    password: "hPAdYIyd6ajE"
+
+captive_portal:
+    
