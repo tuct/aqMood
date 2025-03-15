@@ -63,18 +63,20 @@ Esphome based
 ### Bill of Material
 ![alt text](images/bom.png "BOM")
 
-* XIAO Seeed ESP32-S3 or C3
-* SEN66 sensor
-* LCD 1.8 SPI
-* WS2812b 13 Leds 60leds/m strip
+* XIAO Seeed ESP32-S3 or C3 - [Amazon S3](https://amzn.to/423OqtX), [Amazon C3](https://amzn.to/4iRqP58)
+* SEN66 sensor [Ebay - Eu only](https://www.ebay.at/itm/388088341147)
+* LCD 1.8 SPI - [Amazon](https://amzn.to/3FvKMQR)
+* WS2812b 13 Leds 60leds/m strip - [Amazon](https://amzn.to/4bvql2q)
 * Custom PCB, order from JLCPCP or PCPWAY
-* Touch button - TTP223
-* 1 x 6pin GH1.25 male 
-* 1 x 4pin JST-XH 2.5 male
-* 2 x JST-XH 2.5 3pin male
-* 1 x 4pin JST-XH 2.5 female
-* 2 x 3pin JST-XH 2.5 female
-* Heat insert: M3x5x4
+* Touch button - TTP223 - [Amazon](https://amzn.to/4knrMUJ)
+* 1 x GH1.25 male - 6pin - [Amazon](https://amzn.to/3XXllhl)
+* 1 x JST-XH 2.5 male - 4pin - [Amazon](https://amzn.to/426rlXr)
+* 2 x JST-XH 2.5 male - 3pin - [Amazon](https://amzn.to/426rlXr)
+* 1 x JST-XH 2.5 female - 4pin - [Amazon](https://amzn.to/426rlXr)
+* 2 x JST-XH 2.5 female - 3pin - [Amazon](https://amzn.to/426rlXr)
+* 1 x Pin header 2.54 - 8pin (8.5mm) - [Amazon](https://amzn.to/41SFNRz)
+* 2 x Pin header 2.54- 7pin - [Amazon](https://amzn.to/41SFNRz)
+* Heat insert: M3x5x4 [Amazon](https://amzn.to/3FHNlz7)
 * M3x5 Screw
 * Some wires 
 * Printed 3D Model, 3 parts
@@ -99,6 +101,8 @@ https://www.mouser.at/ProductDetail/Sensirion/SEN66-SIN-T-ES
 
 https://www.digikey.at/en/products/detail/sensirion-ag/sen66-sin-t/25700945
 
+As i bought some extra, i sell 2 or 3 on [ebay](https://www.ebay.at/itm/388088341147), €62 in austria shipping included, EU + shipping
+
 ## PCB
 ![alt text](images/pcb.png "PCB")
 
@@ -120,6 +124,8 @@ Qwiic connector is optional, as it would require SMD soldering equipment.
 
 
 ### AqMood-Bottom
+Print in main color.
+
 This needs some supports, check example:
 
 ![alt text](images/print_bottom_support.png "print overview")
@@ -130,7 +136,9 @@ When importing, choose "Yes" to "... single object having multiple parts?"
 
 ![alt text](images/print_small_shell_multi_parts.png "print overview")
 
-Print in transparent color or if you have a multicolor printer, set the parts like this (yellow is main color, gray is transparent)
+Print in transparent color or 
+
+if you have a multicolor printer, set the parts like this (yellow is main color, gray is transparent)
 
 ![alt text](images/print_small_shell_settings.png "print overview")
 

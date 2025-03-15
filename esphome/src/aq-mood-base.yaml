@@ -1,42 +1,6 @@
 #aq-mood base file
 
 
-esphome:
-  name: ${node_name}
-# uncomment for s3 build  
-#  platformio_options:
-#    build_flags: -DBOARD_HAS_PSRAM
-#    board_build.arduino.memory_type: qio_opi
-#    board_build.f_flash: 80000000L
-#    board_build.flash_mode: qio 
-
-  on_boot:
-    - priority: -100
-      then:
-        - delay: 5s
-        #trigger set brightness
-        - number.set:
-            id: ${id_prefix}_status_light_brightness
-            value: !lambda return id(${id_prefix}_status_light_brightness).state;
-        #set last screen
-        - delay: 5s
-        - select.set:
-            id: ${id_prefix}_screen_select
-            option: !lambda |-
-              auto last = id(${id_prefix}_screen_select).state.c_str();
-              if(last)return last;
-              return "Emojis - Overview";
-
-esp32:
-  # uncomment for s3 build  
-  #board: esp32-s3-devkitc-1
-  board: seeed_xiao_esp32c3
-  framework:
-    type: arduino
-
-
-
-
 # Enable logging
 logger:
 #  level: VERBOSE
@@ -149,6 +113,23 @@ display:
     dimensions:
       height: 160
       width: 128
+script:
+  - id: on_boot
+    then:
+      - delay: 5s
+      #trigger set brightness
+      - number.set:
+          id: ${id_prefix}_status_light_brightness
+          value: !lambda return id(${id_prefix}_status_light_brightness).state;
+      #set last screen
+      - delay: 5s
+      - select.set:
+          id: ${id_prefix}_screen_select
+          option: !lambda |-
+            auto last = id(${id_prefix}_screen_select).state.c_str();
+            if(last)return last;
+            return "Emojis - Overview";
+
 lvgl:
   style_definitions:
     - id: default_obj      
