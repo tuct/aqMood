@@ -4,17 +4,17 @@ Measures PM2.5, VOC, CO2, NOX, Temp and Humidity, Shows emojis or details on LCD
 
 ## Description
 
-This is my last iteration of a DIY Air Quality Monitor.
+This is my last iteration of a DIY Air Quality Monitor. 
 
 ## Features
 
-Emoji and LED-Based AirQuality Display
+Emoji and LED-Based AirQuality Display with Home Assistant integration.
 
-1.8" Color LCD with 6 Display Modes
-
-13 x aRGB Leds to show AQI for PM, VOC and CO2
-
-Touch Button - Short press cycles through display modes, long press toggles Leds
+* 1.8" Color LCD with 6 Display Modes
+* 13 x aRGB Leds to show AQI for PM, VOC and CO2
+* Touch button - Short press cycles through display modes, long press toggles Leds
+* HomeAssistant integration (optional)
+* Quite easy to build with custom PCB
 
 Measures
 * PM(1.0, 2.5, 4.0, 10)
@@ -23,11 +23,8 @@ Measures
 * NOX
 * Temperature
 * Humidity
-* Touch button - cycles display modes, long press controls LEDs
-* HomeAssistant integration (optional)
-* Quite easy to build with custom PCB
+* AQI (PM2.5,VOC,CO2,NOX and overall)
 
-Home Assistant integration 
 
 ### Display modes
 
@@ -148,19 +145,86 @@ if you have a multicolor printer, set the parts like this (yellow is main color,
 
 Print in main color.
 
-## Build
+## Build Guide
 
 ### Prepare PCB 
 
+Bend the 8pin pin header by 90 degree, works very well with on a solid ground.
+
+Solder all connectors and pin headers to the pcb like this:
+
+![alt text](images/pcb_assembled.png "print overview")
+
+The qwiic connector is not needed! It optional in case you have SMD solder equipment. 
+
 ### Prepare Leds
 
-### Prepare Touch Button
+You need 1x7 Leds and 2x 3 leds, 13 in total, prepare them like this:
+
+![alt text](images/leds.png "Leds ")
+
+Make sure + and ground are correct!
+
+The order of the LEDs is important to match the text on the top!
+
+Start on the side with the nodge with the 7 leds going over the top and back into the bottom.
+
+![alt text](images/leds_tower_1.png "Leds ")
+
+Next is the left side, get both 3*Leds first to the top again and then below the led strip back down on the ither side.
+
+![alt text](images/leds_tower_2.png "Leds ")
+
+### Prepare the Touch Button
+
+![alt text](images/button.png "Leds ")
+
+Make sure + and ground are correct!
 
 ### Prepare SEN66
 
-### Test Hardware 
+Prepare a cable with  GH1.25 male - 6pin on one side and JST-XH 2.5 male - 4pin on the other side like this:
+
+![alt text](images/sen66_1.png "Leds ")
+
+![alt text](images/sen66_2.png "Leds ")
+
+### Connect and Test Hardware 
+
+Connect everything together and flash the firmware. I recommend testing everthing before final assembly.
+
+![alt text](images/test_assembly.png "Leds ")
+
+Leds should work (might need to enable by long press the button) and LCD should show the UI.
+
+Test cycle through the display modes. It might take up to 20sec until all measurments are available.
 
 ### Final Assembly 
+
+Remove supports from the 3D printed parts and add the heat insert. 
+
+
+Insert the SEN66 sensor, disconnect it from the PCB if you tested it.
+
+
+![alt text](images/build_sen66.png "Leds ")
+
+Insert the heat insert now into the bottom part!
+
+Insert the PCB with the LCD and connect everthing.
+
+Use M3x5 screw to secure pcb.
+
+
+![alt text](images/build_assembly.png "Leds ")
+
+But the LED tower on and then the top part, DONE!
+
+![alt text](images/final_build_2.png "Leds ")
+
+![alt text](images/final_build.png "Leds ")
+
+
 
 
 
@@ -173,23 +237,34 @@ If you don't want to build and flash with esphome yourself, you can use one of t
 * [firmware.s3.bin](esphome/bin/firmware.s3.bin)
 * [firmware.s3.standalone.bin - no WIFI / Home Assistant](esphome/bin/firmware.s3.standalone.bin)
 
+Files with "standalone" inm the name are the versions without wifi/home assistant supptort
+Make sure you flaash the correct version for your ESP!
 
-https://web.esphome.io/ to flash one of the 2 provided firmeware flavours:
+### How to flash the firmware - easy mode
 
-* With wifi and home assistant
-* Standalone
+Use https://web.esphome.io/ to flash one of the 2 provided firmeware flavours:
+* With wifi and home assistant firmware.c3.bin or firmware.s3.bin
+* Standalone - firmware.c3.standalone.bin or firmware.s3.standalone.bin
 
-Both are availiable for the S3 and the C3 variant, make sure you flaash the correct version!
 
-Go to https://web.esphome.io/ connect your xiao-seed-esp32-s3 or c3 and hold reset and boot (both buttons), release reset first, this put the esp32 into flash mode.
+Go to https://web.esphome.io/ 
+
+connect your xiao-seed-esp32-s3 or c3 and 
+
+hold reset and boot (both buttons), 
+
+release reset first, this puts  the esp32 into flash mode.
 
 Now hit connect and select the device
+
 ![alt text](images/fw_connect.png "connect")
 
 You will see a screen like this, hit "Install"
+
 ![alt text](images/fw_install.png "install")
 
 Select the firmware file and fit "upload", it will take 1-2 min to install
+
 ![alt text](images/fw_upload_running.png "BOM")
 
 ![alt text](images/fw_install_done.png "BOM")
@@ -207,11 +282,15 @@ AP: mista-aq-mood-c3 or mista-aq-mood-s3
 PW: aqMoodaqMood
 
 Then go to '192.168.4.1' in your browser of choice
+
 ![alt text](images/wifisetup_configure.png "wifi config")
 
 and set your SSID and PW, done!
 
 ## Home assistant 
+
+This shows all availiable values in home assistant provided by AqMood.
+
 ![alt text](images/home_assistant.png "home assistant")
 
 ### Passwords for home assistant api and OTA
@@ -221,3 +300,18 @@ aqmoodpw
 
 #### Esphome OTA password
 aqmoodpw
+
+## Build with esphome
+
+Current version was build with esphome 2025.2.2.
+
+Simply run esphome run  aq-mood-c3.yaml in the esphome folder to build and upload your version.
+
+Passwords are stored in secrets.yaml, some stuff can be easily modified in the main file aq-mood-c3.yaml in the SUBSTITIONS section. 
+
+If you want to hard code a wifi pw, this is done in src/aq-mood-home-assistant.yaml
+
+As of now, there is no official driver for tzhe sen66 sensor in esphome, so i quickly adopted to sen5X driver and published it here:
+https://github.com/tuct/esphome_external_components
+
+This will be updated to use the official driver as soon as it is released.
